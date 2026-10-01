@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f7f5ef" />
+  <title>Whisk — Recipe Book</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Whisk home"><span class="brand-mark">✳</span><span>whisk<span class="brand-dot">.</span></span></a>
+      <div class="side-label">YOUR KITCHEN</div>
+      <nav class="nav-list" aria-label="Recipe categories">
+        <button class="nav-item active" data-category="All"><span class="nav-icon">▦</span> All recipes <span class="nav-count" id="allCount">0</span></button>
+        <button class="nav-item" data-category="Breakfast"><span class="nav-icon">☀</span> Breakfast</button>
+        <button class="nav-item" data-category="Lunch"><span class="nav-icon">◒</span> Lunch</button>
+        <button class="nav-item" data-category="Dinner"><span class="nav-icon">☾</span> Dinner</button>
+        <button class="nav-item" data-category="Dessert"><span class="nav-icon">♡</span> Dessert</button>
+        <button class="nav-item" data-category="Snacks"><span class="nav-icon">✦</span> Snacks</button>
+      </nav>
+      <div class="sidebar-note"><div class="note-icon">✿</div><strong>A little inspiration</strong><p>Good food is all the sweeter when shared with good people.</p></div>
+      <div class="side-footer"><span class="avatar">S</span><span><b>My cookbook</b><small>Saved on this device</small></span><span class="more">•••</span></div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar"><div class="breadcrumb">MY KITCHEN <span>/</span> <b id="crumb">ALL RECIPES</b></div><div class="top-actions"><span class="local-badge"><i></i> Saved locally</span><button class="icon-button" id="themeToggle" aria-label="Toggle theme">☼</button></div></header>
+      <section class="hero"><div class="hero-copy"><div class="eyebrow"><span></span> YOUR PERSONAL COOKBOOK</div><h1>Recipes worth<br><em>remembering.</em></h1><p>Keep your favorite flavors close. Collect, organize, and make every meal a little more special.</p><button class="primary-button" id="addTop"><span>＋</span> Add a recipe</button></div><div class="hero-art"><div class="sunburst"></div><div class="hero-food">🥑</div><div class="floating-card"><span>✦ TODAY'S MOOD</span><b>Fresh & simple</b><small>Make something lovely.</small></div><span class="art-leaf leaf-one">✿</span><span class="art-leaf leaf-two">❋</span></div></section>
+      <section class="recipes-section"><div class="section-heading"><div><div class="eyebrow">THE COLLECTION</div><h2 id="sectionTitle">All recipes <span id="recipeCount">0</span></h2></div><button class="text-button" id="clearSearch" hidden>Clear search ×</button></div>
+        <div class="toolbar"><div class="search-wrap"><span>⌕</span><input id="searchInput" type="search" placeholder="Search your recipes..." aria-label="Search recipes" /></div><select id="sortSelect" aria-label="Sort recipes"><option value="newest">Recently added</option><option value="az">Name: A to Z</option><option value="time">Quickest first</option></select><button class="add-button" id="addButton">＋ <span>New recipe</span></button></div>
+        <div class="recipe-grid" id="recipeGrid"></div>
+        <div class="empty-state" id="emptyState" hidden><div class="empty-illustration">🥣</div><h3>No recipes found</h3><p>Try another search or add a new favorite to your collection.</p><button class="primary-button" id="emptyAdd">＋ Add a recipe</button></div>
+      </section>
+      <footer class="main-footer">Made with <span>♥</span> and a little bit of butter <span class="footer-right">WHISK. · YOUR COOKBOOK, YOUR WAY</span></footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="formModal" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="formTitle"><div class="modal-head"><div><div class="eyebrow">ADD TO YOUR COLLECTION</div><h2 id="formTitle">A new favorite</h2></div><button class="close-button" data-close="formModal" aria-label="Close">×</button></div><form id="recipeForm"><input type="hidden" id="recipeId"><label>Recipe name<input id="recipeName" maxlength="70" placeholder="e.g. Creamy tomato pasta" required></label><div class="form-row"><label>Category<select id="recipeCategory" required><option>Breakfast</option><option>Lunch</option><option>Dinner</option><option>Dessert</option><option>Snacks</option></select></label><label>Prep time (minutes)<input id="recipeTime" type="number" min="1" max="999" placeholder="25" required></label></div><label>Image URL <span class="optional">(optional)</span><input id="recipeImage" type="url" placeholder="https://... (leave blank for an illustration)"></label><label>Ingredients<textarea id="recipeIngredients" rows="3" placeholder="One ingredient per line" required></textarea></label><label>Instructions<textarea id="recipeInstructions" rows="4" placeholder="Write the steps, one per line" required></textarea></label><div class="form-actions"><button type="button" class="secondary-button" data-close="formModal">Cancel</button><button type="submit" class="primary-button">Save recipe <span>↗</span></button></div></form></section></div>
+
+  <div class="modal-backdrop" id="detailModal" hidden><section class="modal detail-modal" role="dialog" aria-modal="true" aria-labelledby="detailTitle"><button class="close-button detail-close" data-close="detailModal" aria-label="Close">×</button><div id="detailContent"></div></section></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
