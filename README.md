@@ -33,6 +33,7 @@ Vercel
 Adjust this list according to the actual technologies used in your project.
 
 🚀 Live Demo
+https://recipe-book-with-categories-recipe-psi.vercel.app/
 
 View Live Project
 
